@@ -1,0 +1,79 @@
+{
+  "nodes": {
+    "amd-xdna": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1773433771,
+        "narHash": "sha256-JDkmj1OJVF/rmw+bgox2xZAQzD6aO4nZBkigskjRNbk=",
+        "ref": "refs/heads/main",
+        "rev": "d4456f1f3bb977f56245d999e32fa71f5ad240ab",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://codeberg.org/tmichnicki/amd-xdna-nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/tmichnicki/amd-xdna-nix"
+      }
+    },
+    "fastflowlm-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773417741,
+        "narHash": "sha256-yVyavqbAOgJj5dQdwKFJPS1XCnL1dTXG9ceJinVQPAs=",
+        "ref": "refs/heads/main",
+        "rev": "b25f90d6e75eab639c98f36fd52751ca6c1c6fb0",
+        "revCount": 1048,
+        "type": "git",
+        "url": "https://github.com/FastFlowLM/FastFlowLM"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/FastFlowLM/FastFlowLM"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1773122722,
+        "narHash": "sha256-FIqHByVqxCprNjor1NqF80F2QQoiiyqanNNefdlvOg4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "62dc67aa6a52b4364dd75994ec00b51fbf474e50",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1773282481,
+        "narHash": "sha256-b/GV2ysM8mKHhinse2wz+uP37epUrSE+sAKXy/xvBY4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fe416aaedd397cacb33a610b33d60ff2b431b127",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "amd-xdna": "amd-xdna",
+        "fastflowlm-src": "fastflowlm-src",
+        "nixpkgs": "nixpkgs_2"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
