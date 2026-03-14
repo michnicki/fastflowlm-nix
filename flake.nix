@@ -101,6 +101,7 @@ EOF
               pkgs.ninja
               pkgs.pkg-config
               pkgs.python3
+              pkgs.makeWrapper
             ];
 
             buildInputs = [
@@ -181,6 +182,7 @@ FAKECARGO
               runHook preFixup
               XRT_LIB_PATH_SAVED="${xrt}/lib"
               [[ ! -d "$XRT_LIB_PATH_SAVED" ]] && XRT_LIB_PATH_SAVED="${xrt}/lib64"
+              wrapProgram $out/bin/flm --set XILINX_XRT "${xrt}"
               FULL_RPATH=${pkgs.lib.makeLibraryPath [
                 pkgs.util-linux.lib
                 pkgs.ffmpeg.lib
