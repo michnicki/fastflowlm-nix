@@ -21,11 +21,11 @@
     "fastflowlm-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1773417741,
-        "narHash": "sha256-yVyavqbAOgJj5dQdwKFJPS1XCnL1dTXG9ceJinVQPAs=",
+        "lastModified": 1774647765,
+        "narHash": "sha256-jcEk2UxpLHCtrcOcQ8MY9IKtFZWccH9qR6t6ulaAnoQ=",
         "ref": "refs/heads/main",
-        "rev": "b25f90d6e75eab639c98f36fd52751ca6c1c6fb0",
-        "revCount": 1048,
+        "rev": "0edfa89cf955f3582e0baf797d589dd6b27d3685",
+        "revCount": 1170,
         "type": "git",
         "url": "https://github.com/FastFlowLM/FastFlowLM"
       },
