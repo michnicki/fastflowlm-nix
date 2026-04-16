@@ -1,6 +1,6 @@
 # FastFlowLM Nix Flake
 
-This repository contains a Nix flake for packaging [FastFlowLM](https://github.com/FastFlowLM/FastFlowLM) **v0.9.39**, a fast Large Language Model (LLM) inference engine optimized for AMD NPUs, along with the required AMD XDNA driver.
+This repository contains a Nix flake for packaging [FastFlowLM](https://github.com/FastFlowLM/FastFlowLM), a fast Large Language Model (LLM) inference engine optimized for AMD NPUs, along with the required AMD XDNA driver.
 
 ## Overview
 
