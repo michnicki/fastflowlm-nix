@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     
     # The AMD XDNA driver flake
-    amd-xdna.url = "git+https://codeberg.org/tmichnicki/amd-xdna-nix";
+    amd-xdna.url = "git+https://github.com/michnicki/amd-xdna-nix";
     
     # The FastFlowLM source code
     fastflowlm-src = {

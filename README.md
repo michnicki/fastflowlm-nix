@@ -12,7 +12,7 @@ The flake provides:
 
 - A system running Nix with flake support enabled.
 - An AMD system with a supported NPU (XDNA architecture).
-- Access to the `amd-xdna` driver repository (`https://codeberg.org/tmichnicki/amd-xdna-nix` as configured in `flake.nix`).
+- Access to the `amd-xdna` driver repository (`https://github.com/michnicki/amd-xdna-nix` as configured in `flake.nix`).
 
 ## Usage
 
@@ -25,7 +25,7 @@ You can run the `flm` CLI directly from this flake using `nix run`:
 nix run . -- --help
 
 # Or remotely
-nix run git+https://codeberg.org/tmichnicki/fastflowlm-nix -- --help
+nix run git+https://github.com/michnicki/fastflowlm-nix -- --help
 ```
 
 ### NixOS Module
@@ -38,7 +38,7 @@ To use it, add this flake to your system's `flake.nix` inputs and import the mod
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    fastflowlm-nix.url = "git+https://codeberg.org/tmichnicki/fastflowlm-nix";
+    fastflowlm-nix.url = "git+https://github.com/michnicki/fastflowlm-nix";
   };
 
   outputs = { self, nixpkgs, fastflowlm-nix, ... }: {
@@ -75,7 +75,7 @@ To use it, add this flake to your system's `flake.nix` inputs and import the mod
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    fastflowlm-nix.url = "git+https://codeberg.org/tmichnicki/fastflowlm-nix";
+    fastflowlm-nix.url = "git+https://github.com/michnicki/fastflowlm-nix";
     # Reuse the exact amd-xdna version this flake was tested with:
     amd-xdna.follows = "fastflowlm-nix/amd-xdna";
   };
