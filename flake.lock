@@ -27,11 +27,11 @@
         "rev": "cd5ab12c0f98fb61b0c33fc66752ac2d204d44b6",
         "revCount": 1626,
         "type": "git",
-        "url": "https://github.com/FastFlowLM/FastFlowLM"
+        "url": "https://github.com/ROCm/FastFlowLM"
       },
       "original": {
         "type": "git",
-        "url": "https://github.com/FastFlowLM/FastFlowLM"
+        "url": "https://github.com/ROCm/FastFlowLM"
       }
     },
     "nixpkgs": {

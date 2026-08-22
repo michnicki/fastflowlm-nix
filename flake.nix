@@ -9,7 +9,7 @@
     
     # The FastFlowLM source code
     fastflowlm-src = {
-      url = "git+https://github.com/FastFlowLM/FastFlowLM";
+      url = "git+https://github.com/ROCm/FastFlowLM";
       flake = false;
     };
   };
