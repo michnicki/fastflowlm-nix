@@ -77,10 +77,16 @@ EOF
             installPhase = "ninja -C build install";
           };
 
-          # NPU kernel libraries from FastFlowLM source
+          # NPU kernel libraries from FastFlowLM source.
+          #
+          # Upstream keeps the prebuilt engine libs in a per-backend subdirectory
+          # so the XRT and HRX builds never collide (src/lib/xrt vs src/lib/hrx).
+          # This must track FLM_ENGINE_LIB_DIR in src/CMakeLists.txt, which follows
+          # FLM_USE_HRX; we leave that at its default of OFF, so xrt it is. The top
+          # of src/lib holds only Windows .dll files plus two stale .so leftovers.
           npu-kernel-libs = pkgs.stdenv.mkDerivation {
             name = "flm-npu-libs";
-            src = "${fastflowlm-src}/src/lib";
+            src = "${fastflowlm-src}/src/lib/xrt";
             dontConfigure = true;
             dontBuild = true;
             installPhase = ''
