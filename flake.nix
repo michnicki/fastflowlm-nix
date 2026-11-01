@@ -149,7 +149,7 @@ EOF
 
           flm = pkgs.stdenv.mkDerivation {
             pname = "flm";
-            version = "1.0.9";
+            version = "1.0.11";
             src = fastflowlm-src;
 
             nativeBuildInputs = [
@@ -235,7 +235,7 @@ FAKECARGO
                 -DCMAKE_BUILD_TYPE=Release \
                 -DCMAKE_INSTALL_PREFIX=$out \
                 -DCMAKE_XCLBIN_PREFIX=$out/share/flm \
-                -DFLM_VERSION=1.0.9 \
+                -DFLM_VERSION=1.0.11 \
                 -DNPU_VERSION=32.0.203.304 \
                 -DXRT_INCLUDE_DIR="$XRT_INCLUDE_PATH" \
                 -DXRT_LIB_DIR="$XRT_LIB_PATH" \
