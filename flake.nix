@@ -40,6 +40,17 @@
             fetchSubmodules = true;
           };
 
+          # Fetch xgrammar (grammar engine for constrained decoding) with its
+          # 3rdparty submodules. Pinned to the gitlink FastFlowLM references;
+          # only needs updating when FastFlowLM bumps that submodule.
+          xgrammar-src = pkgs.fetchFromGitHub {
+            owner = "mlc-ai";
+            repo = "xgrammar";
+            rev = "97787376faee5ed8466cfad57c99855e4ce2f6aa";
+            hash = "sha256-Ff/CLdSjq8ammfci+Eu9hY4433e7csf8EeGu2X9B2rI=";
+            fetchSubmodules = true;
+          };
+
           # Build tokenizers-cpp Rust library
           tokenizers-c-rust = rustPlatform.buildRustPackage {
             name = "tokenizers-c";
@@ -137,6 +148,12 @@ EOF
               mkdir -p "$sourceRoot/third_party"
               cp -r ${tokenizers-cpp-src} "$sourceRoot/third_party/tokenizers-cpp"
               chmod -R u+w "$sourceRoot/third_party/tokenizers-cpp"
+
+              # Same for the xgrammar submodule (v1.0.11+ builds flm_xgrammar
+              # from third_party/xgrammar sources).
+              rm -rf "$sourceRoot/third_party/xgrammar"
+              cp -r ${xgrammar-src} "$sourceRoot/third_party/xgrammar"
+              chmod -R u+w "$sourceRoot/third_party/xgrammar"
 
               # Create a fake cargo stub so the CMake custom command won't invoke real cargo
               cat > "$sourceRoot/third_party/tokenizers-cpp/fake-cargo" << 'FAKECARGO'
