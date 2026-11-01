@@ -117,7 +117,9 @@ EOF
               pkgs.fftwFloat
               pkgs.fftwLongDouble
               pkgs.ffmpeg
-              pkgs.readline
+              # v1.0.11 switched line editing from GPL readline to BSD
+              # libedit (readline-compatible API, linked via pkg-config).
+              pkgs.libedit
               pkgs.libxcrypt
               pkgs.zlib
               pkgs.util-linux.dev
@@ -197,7 +199,7 @@ FAKECARGO
                 pkgs.fftw
                 pkgs.fftwFloat
                 pkgs.fftwLongDouble
-                pkgs.readline
+                pkgs.libedit
                 pkgs.ncurses
                 pkgs.gcc.libc
                 pkgs.stdenv.cc.cc
