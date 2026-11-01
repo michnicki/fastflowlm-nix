@@ -51,6 +51,45 @@
             fetchSubmodules = true;
           };
 
+          # v1.0.11 builds these codec libraries from pinned release tarballs
+          # through ExternalProject (src/cmake/FlmAudioCodecs.cmake and
+          # FlmImageCodecs.cmake), which downloads at build time — impossible
+          # in the Nix sandbox. Pre-fetch them and rewrite the URLs to file://
+          # in postPatch; ExternalProject still verifies the same URL_HASH.
+          # Versions and hashes track upstream's pins; only need updating when
+          # FastFlowLM bumps these dependencies.
+          libjpeg-turbo-tarball = pkgs.fetchurl {
+            url = "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.2.0/libjpeg-turbo-3.2.0.tar.gz";
+            hash = "sha256-bzAJLO+fuDl3lkZgj07hSuPLrJicR/oF6EGwhB8Jh44=";
+          };
+          libwebp-tarball = pkgs.fetchurl {
+            url = "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0.tar.gz";
+            hash = "sha256-5KtwCb8GKf0RmC1MKqg5ZM8kTP+6c0fs05AZqeOMRWQ=";
+          };
+          opus-tarball = pkgs.fetchurl {
+            urls = [
+              "https://downloads.xiph.org/releases/opus/opus-1.6.1.tar.gz"
+              "https://ftp.osuosl.org/pub/xiph/releases/opus/opus-1.6.1.tar.gz"
+            ];
+            hash = "sha256-b/y1kyB76SWE3xWzJGbtZLvsmRCfAHyCIF8BlFckEaE=";
+          };
+          ogg-tarball = pkgs.fetchurl {
+            urls = [
+              "https://github.com/xiph/ogg/releases/download/v1.3.6/libogg-1.3.6.tar.gz"
+              "https://downloads.xiph.org/releases/ogg/libogg-1.3.6.tar.gz"
+              "https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.6.tar.gz"
+            ];
+            hash = "sha256-g+ZwRzBoPQBNIOIbj39V3LM4PN+EwNrt8wveF193Rjg=";
+          };
+          vorbis-tarball = pkgs.fetchurl {
+            urls = [
+              "https://github.com/xiph/vorbis/releases/download/v1.3.7/libvorbis-1.3.7.tar.gz"
+              "https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.gz"
+              "https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.7.tar.gz"
+            ];
+            hash = "sha256-DpgkCanD/ILuBuCCBbE1XlxqpMNrylgUbvOZYhsM5as=";
+          };
+
           # Build tokenizers-cpp Rust library
           tokenizers-c-rust = rustPlatform.buildRustPackage {
             name = "tokenizers-c";
@@ -161,6 +200,22 @@ EOF
 exit 0
 FAKECARGO
               chmod +x "$sourceRoot/third_party/tokenizers-cpp/fake-cargo"
+            '';
+
+            postPatch = ''
+              # Point the codec ExternalProjects at the pre-fetched tarballs
+              # instead of downloading at build time. file:// URLs keep the
+              # URL_HASH verification intact.
+              sed -i 's|URL https://github.com/libjpeg-turbo/.*|URL file://${libjpeg-turbo-tarball}|' \
+                src/cmake/FlmImageCodecs.cmake
+              sed -i 's|URL https://storage.googleapis.com/.*|URL file://${libwebp-tarball}|' \
+                src/cmake/FlmImageCodecs.cmake
+              sed -i 's|"[^"]*opus-1\.6\.1\.tar\.gz[^"]*"|"file://${opus-tarball}"|' \
+                src/cmake/FlmAudioCodecs.cmake
+              sed -i 's|"[^"]*libogg-1\.3\.6\.tar\.gz[^"]*"|"file://${ogg-tarball}"|' \
+                src/cmake/FlmAudioCodecs.cmake
+              sed -i 's|"[^"]*libvorbis-1\.3\.7\.tar\.gz[^"]*"|"file://${vorbis-tarball}"|' \
+                src/cmake/FlmAudioCodecs.cmake
             '';
 
             configurePhase = ''
