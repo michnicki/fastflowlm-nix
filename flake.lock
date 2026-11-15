@@ -21,11 +21,11 @@
     "fastflowlm-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1793844849,
-        "narHash": "sha256-67ehg1YoSl1lFg/KNFFwmxxKsabAZTDk6NTANkGjmfU=",
+        "lastModified": 1794726857,
+        "narHash": "sha256-OaCp4W2/QDycCgEApty6gmjlBRpSIJyGiQO0N7Svv1A=",
         "ref": "refs/heads/main",
-        "rev": "e0a2748d40cebc8c0eb2daef9f9d08e45c71c328",
-        "revCount": 2431,
+        "rev": "07defcb8cb9a6da9bc06f21eb5948b9145028506",
+        "revCount": 2568,
         "type": "git",
         "url": "https://github.com/ROCm/FastFlowLM"
       },
@@ -52,11 +52,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1793726008,
-        "narHash": "sha256-jQp1wKvbwWdLBASTXkSi/VYmDJ5AbBi1WvcMt9HWJC8=",
+        "lastModified": 1794537146,
+        "narHash": "sha256-Wpz/7x/YWnDIBu7yj6ixe8j6fIMsidd9Y+o1PqPF3iM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1d060086d60cb76a40cf37109f979d88a5bd6396",
+        "rev": "d5cc6833999746cffdfe0598f7bc801a57b887a9",
         "type": "github"
       },
       "original": {
