@@ -96,6 +96,11 @@
             version = "0.1.0";
             src = "${tokenizers-cpp-src}/rust";
             cargoHash = "sha256-AYsFZSWmWRLXLKNeFsHpc5pE09GazTvENr3yXvHCt2s=";
+            # nixpkgs' cargo-setup-hook now exports RUSTONIG_SYSTEM_LIBONIG=1
+            # (cargoUseSystemLibs), which makes onig_sys demand a system
+            # oniguruma via pkg-config — unavailable here and panicking the
+            # build. Opt out so onig_sys compiles its bundled oniguruma again.
+            dontCargoUseSystemLibs = true;
             postUnpack = ''
               cp ${./Cargo.lock} "$sourceRoot/Cargo.lock"
             '';
